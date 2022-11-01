@@ -9,7 +9,8 @@ def index(request):
     if request.method == "POST":
         name = request.POST.get("name") # получить значение поля Имя
         age = request.POST.get("age")  # получить значение поля Возраст
-        output = "<h2>Пользователь</h2><h3>Имя - {0}, Возраст - {1} </hЗ>".format(name, age)
+        town = request.POST.get("town")
+        output = "<h2>Пользователь</h2><h3>Имя - {0}, Возраст - {1}, Город - {2}  </hЗ>".format(name, age, town)
         return HttpResponse(output)
     else:
         userform = UserForm()
