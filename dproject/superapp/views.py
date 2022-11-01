@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
 from .forms import UserForm
+from .models import Person
 
 # Create your views here.
 
@@ -11,7 +12,9 @@ def index(request):
         age = request.POST.get("age")  # получить значение поля Возраст
         town = request.POST.get("town")
         output = "<h2>Пользователь</h2><h3>Имя - {0}, Возраст - {1}, Город - {2}  </hЗ>".format(name, age, town)
-        return HttpResponse(output)
+        people = Person.objects.all()
+        return render(request, "index.html", {"people": people})
+        # return HttpResponse(output)
     else:
         userform = UserForm()
         return render(request, "index.html", {"form": userform})

@@ -13,8 +13,14 @@
         {% csrf_token %}
         <table>
             {{ form }}
-    </table>
     <input type = "submit" value = "Отправить">
+        </table>
 
+    </form>
+
+{% for i in people %}
+<p>
+        {{ i.name }} {{ i.age }} {{ i.hs }}
+        {% endfor %}
 </body>
 </html>
