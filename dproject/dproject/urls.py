@@ -19,6 +19,7 @@ from superapp import views
 
 urlpatterns = [
     path('', views.index),
+    # path('create/', views.create),
     path('base/', views.base),
     path('about/', views.about),
     path('admin/', admin.site.urls),

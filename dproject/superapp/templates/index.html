@@ -4,23 +4,40 @@
     <meta charset="UTF-8">
     <title>Index</title>
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">-->
+<!--    {% load static from static %}-->
+    <link rel="stylesheet" href="/static/css/styles1.css">
+
 </head>
 <body>
-<h1>Index HTML form</h1>
-<hr>
-    <form method = "POST">
-        {% csrf_token %}
-        <table>
-            {{ form }}
-    <input type = "submit" value = "Отправить">
-        </table>
+<form method="POST" action="create/">
+    {% csrf_token %}
 
-    </form>
-
-{% for i in people %}
 <p>
-        {{ i.name }} {{ i.age }} {{ i.hs }}
-        {% endfor %}
+<lаbel>Введите имя</lаbel><br>
+<input type="text" name="name" />
+
+<p>
+<lаbel>Введите возраст</lаbel><br>
+<input type="number" name="age" />
+<p>
+    <input type="submit" vаluе="Сохранить" >
+
+</form>
+
+{% if people.count > 0 %}
+<h2>Список работников</h2>
+<h3>
+<tablе>
+<tr><th>Имя</th><th>Boзpacт</th></tr>
+<hr>
+    {% for person in people %}
+<!--<tr><td>{{ person.id }}</td>-->
+<td>{{ person.name }}</td>
+<td>{{ person.age }}</td></tr>
+    {% endfor %}
+</tablе>
+    <h3>
+{% endif %}
 </body>
 </html>
