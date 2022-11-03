@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from .forms import UserForm
 from .models import Person
 
@@ -21,6 +21,13 @@ def index(request):
     #     return render(request, "index.html", {"form": userform})
 
 
+def create(request):
+    if request.method == 'POST':
+        klient = Person()
+        klient.name = request.POST.get('name')
+        klient.age = request.POST.get('age')
+        klient.save()
+    return HttpResponseRedirect('/')
 def base(request):
     some_list = [2 ** x for x in range(50)]
     some_string = ' '.join(map(str, some_list))
